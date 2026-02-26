@@ -1,5 +1,5 @@
 // 🎂 Yaha birthday date set karo
-const birthday = new Date("February 27, 2026 00:00:00").getTime();
+const birthday = new Date("February 26, 2026 00:00:00").getTime();
 
 const timer = setInterval(function(){
 
