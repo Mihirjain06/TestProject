@@ -1,0 +1,569 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ece,#b3e5ff); /* Updated color combo for vibrancy */
+overflow-x:hidden;
+}
+
+/* ONE TIME BLAST */
+#blast{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:1;
+}
+
+/* SMOOTH FLOAT BG (ENHANCED) */
+.background-bubbles{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:0;
+pointer-events:none;
+}
+
+.background-bubbles span{
+position:absolute;
+bottom:-100px;
+width:60px;
+height:60px;
+background:rgba(255,255,255,0.4); /* Slightly more visible */
+border-radius:50%;
+animation:float 18s linear infinite;
+box-shadow:0 0 15px rgba(255,255,255,0.6);
+}
+
+@keyframes float{
+0%{
+    transform:translateY(0) translateX(0) scale(1);
+    opacity:0;
+}
+10%{
+    opacity:1;
+}
+90%{
+    opacity:1;
+}
+100%{
+    transform:translateY(-130vh) translateX(calc(60px * (var(--direction, 1)))) scale(0.8);
+    opacity:0;
+}
+}
+
+.background-bubbles span:nth-child(even){
+--direction: -1;
+}
+
+/* STICKERS BG */
+.background-stickers{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:0;
+pointer-events:none;
+}
+
+@keyframes floatSticker{
+0%{
+    transform:translateY(100vh) rotate(0deg);
+    opacity:0;
+}
+10%{
+    opacity:1;
+}
+100%{
+    transform:translateY(-100vh) rotate(360deg);
+    opacity:0;
+}
+}
+/* MODAL IMPROVEMENTS - Better spacing, justification & readability */
+
+/* Main Modal (for card clicks) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75); /* Slightly darker overlay for focus */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Nice modern blur effect */
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff5f8, #f0f9ff);
+    padding: 40px 35px;              /* Increased padding for breathing room */
+    border-radius: 28px;
+    max-width: 480px;                /* Wider but not too wide */
+    width: 90%;                      /* Responsive width */
+    text-align: left;                /* Changed to left for natural reading */
+    position: relative;
+    box-shadow: 0 15px 50px rgba(255, 105, 180, 0.35);
+    animation: zoomIn 0.5s ease-out;
+    overflow-y: auto;                /* Scroll if text is long */
+    max-height: 100vh;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.75); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    font-size: 36px;
+    color: #ff1493;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close:hover {
+    color: #c71585;
+    transform: rotate(90deg);
+}
+
+/* Modal Text Styling */
+#modalText {
+    font-size: 1.15rem;
+    line-height: 1.8;               /* Generous line spacing */
+    color: #333;
+    margin: 0;
+    white-space: pre-wrap;          /* Respects <br> tags */
+    word-wrap: break-word;
+}
+
+/* Make emojis & important parts pop */
+#modalText b,
+#modalText strong {
+    color: #ff1493;
+    font-weight: 700;
+}
+
+#modalText i,
+#modalText em {
+    color: #ff69b4;
+    font-style: italic;
+}
+
+/* Extra spacing between paragraphs (when using <br><br>) */
+#modalText br + br {
+    content: "";
+    display: block;
+    margin-bottom: 1.2em;           /* Extra visual gap */
+}
+
+/* Cute Modal (for success/error messages) - already good, but consistent spacing */
+.cute-modal-content {
+    padding: 40px 30px;             /* More padding */
+}
+
+.cute-modal-content p {
+    line-height: 1.7;
+    font-size: 1.2rem;
+    margin: 0 0 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 30px 20px;
+        max-width: 95%;
+    }
+
+    #modalText {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .close {
+        top: 12px;
+        right: 18px;
+        font-size: 32px;
+    }
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+z-index:2;
+padding:20px;
+}
+
+.title{
+font-size:3rem;
+color:#ff1493; /* Updated pink */
+text-shadow:0 3px 6px rgba(0,0,0,0.15);
+animation:fadeIn 2s ease, pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+100%{transform:scale(1.05);}
+}
+
+.subtitle{
+margin-top:20px;
+color:#333;
+font-size:1.3rem;
+}
+
+.hero button{
+margin-top:35px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg, #ff1493, #ff69b4);
+color:white;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 5px 15px rgba(255,20,147,0.4);
+}
+
+.hero button:hover{
+transform:scale(1.1);
+box-shadow:0 8px 20px rgba(255,20,147,0.6);
+}
+
+/* Q&A */
+.qa-section{
+padding:120px 20px;
+text-align:center;
+background:rgba(255,255,255,0.9);
+border-radius:25px;
+margin:0 30px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+position:relative;
+z-index:2;
+}
+
+.qa-section h2{
+color:#ff1493;
+font-size:2rem;
+margin-bottom:30px;
+}
+
+.question{
+margin-bottom:20px;
+}
+
+.qa-section input{
+padding:12px 20px;
+width:300px;
+border-radius:30px;
+border:1px solid #eee;
+margin-top:10px;
+background:#f9f9f9;
+transition:.3s;
+}
+
+.qa-section input:focus{
+border-color:#ff1493;
+box-shadow:0 0 10px rgba(255,20,147,0.2);
+}
+
+.qa-section button{
+padding:12px 30px;
+margin-top:20px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg, #ff1493, #ff69b4);
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.qa-section button:hover{
+background:linear-gradient(45deg, #ff69b4, #ff1493);
+}
+
+.secret{
+display:none;
+margin-top:40px;
+font-size:1.4rem;
+color:#222;
+padding:30px;
+background:linear-gradient(135deg, #fff0f5, #f0f8ff);
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+position:relative;
+animation:revealUnique 1s ease forwards;
+}
+
+@keyframes revealUnique{
+0%{opacity:0; transform:rotate(-5deg) scale(0.9);}
+100%{opacity:1; transform:rotate(0) scale(1);}
+}
+
+#confetti{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-1;
+}
+
+/* CARDS */
+.gallery{
+padding:80px 20px;
+text-align:center;
+background:rgba(255,255,255,0.2);
+}
+
+.gallery h2{
+color:#ff1493;
+margin-bottom:50px;
+font-size:2rem;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.card{
+position:relative;
+width:340px;
+border-radius:30px;
+overflow:hidden;
+cursor:pointer;
+transition:transform 0.5s ease, box-shadow 0.5s ease;
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+display:block;
+transition:transform 0.5s ease;
+}
+.options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.options-list li {
+    background: rgba(255, 240, 245, 0.8);
+    padding: 5px 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+/* Cute Modal Styles */
+.cute-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.cute-modal-content {
+    background: linear-gradient(135deg, #fff0f5, #f0f8ff);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 380px;
+    box-shadow: 0 10px 30px rgba(255,105,180,0.4);
+    position: relative;
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.cute-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    color: #ff1493;
+    cursor: pointer;
+}
+
+.cute-close:hover {
+    color: #c71585;
+}
+
+.cute-img {
+    width: 80px;
+    margin-top: 15px;
+}
+
+/* Wrong answer highlight */
+.wrong-answer {
+    border: 2px solid #ff4d4d !important;
+    background: #fff5f5;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
+    100% { transform: translateX(0); }
+}
+
+.answerInput {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+.answerInput:focus {
+    border-color: #ff1493;
+    box-shadow: 0 0 12px rgba(255,20,147,0.2);
+    outline: none;
+}
+.card-info{
+position:absolute;
+bottom:0;
+width:100%;
+background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+color:white;
+padding:25px;
+text-align:center;
+transition:background 0.5s ease;
+font-size:1.2rem;
+}
+
+.card:hover{
+transform:translateY(-20px) scale(1.05);
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.card:hover img{
+transform:scale(1.15) rotate(2deg);
+}
+
+.card:hover .card-info{
+background:linear-gradient(to top, #ff1493, transparent);
+}
+
+/* VIDEO SECTION */
+.videos {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.videos h2 {
+    color: #ff1493;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+/* Video Container - vertical video ke liye perfect aspect ratio maintain karega */
+.video-container {
+    position: relative;
+    width: 90%;
+    max-width: 320px;          /* Vertical ke liye max-width kam rakh sakte ho taaki zyada wide na lage */
+    margin: 0 auto 30px auto;  /* Center + bottom space */
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background: #000;          /* Black background taaki bars na dikhe */
+}
+
+/* Actual video tag */
+.video-container video {
+    width: 100%;
+    height: 500px;              /* Yeh line sabse important - aspect ratio preserve karegi */
+    display: block;
+    object-fit: contain;       /* Video poora dikhega, crop nahi hoga */
+}
+
+/* Mobile pe full width */
+@media (max-width: 768px) {
+    .video-container {
+        width: 95%;
+        max-width: none;
+    }
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:10;
+}
+
+.modal-content{
+background:linear-gradient(135deg, #fff0f5, #f0f8ff);
+padding:50px;
+border-radius:25px;
+max-width:450px;
+text-align:center;
+position:relative;
+animation:zoomIn 0.6s ease;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.close{
+position:absolute;
+top:15px;
+right:20px;
+cursor:pointer;
+font-size:30px;
+color:#ff1493;
+transition:.3s;
+}
+
+.close:hover{
+color:#c71585;
+}
+
+/* Responsive */
+@media(max-width:768px){
+.title{font-size:2.2rem;}
+.cards{flex-direction:column;align-items:center;}
+.qa-section{width:95%; margin:0 auto; padding:80px 15px;}
+.question input{width:100%;}
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You Vendi 💜</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <canvas id="blast"></canvas>
+
+    <div class="background-bubbles"></div>
+    <div class="background-stickers"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="assets/Apna_Bana_Le_Piya_Flute_Cover_Divyansh_Shrivastava_Arijit_Singh_Bhediya_256kbps.webm"
+            type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1 class="title">Happy Birthday Vendi! 🎂✨</h1>
+        <p class="subtitle">May this year bring you full of happiness and everything your heart has ever wished for.
+            🥳✨<br>
+            Our bond is the permanent, never-coming-off kind — and I really hope it stays exactly like this forever.
+            ❤️🫂<br>
+            Everyone gives you gifts, but I wanted to do something different this time with this chotu si website😜.
+            Hope you like it…<br>
+            I was genuinely so excited for your birthday because it’s the birthday of the person who brought real
+            laughter back into my life. 😭🙌<br>
+            Thank you, Vendi — seriously.<br>
+            <b>You’ve been my best buddy since forever!🫶</b><br>
+            Yeah yeah, I know — according to you, “forever” doesn’t even exist 😂<br>
+            But listen: no matter what you say, no matter how many gaalis you throw at me, I’m sticking by your side.
+            Always. 😤<br>
+            <b class="mt-2"><i>Happy Birthday again!</i></b>
+        </p>
+        <button id="surpriseBtn" onclick="startSurprise()">Start Surprise 🎁</button>
+    </section>
+
+    <!-- Q&A SECTION -->
+    <!-- Q&A SECTION -->
+    <section class="qa-section">
+        <h2>Answer These To Unlock 💌</h2>
+
+        <div class="question" id="q1">
+            <p class="question-text">1. What is my favorite food? 🍲</p>
+            <ul class="options-list">
+                <li>Dal Bati</li>
+                <li>Pav Bhaji</li>
+                <li>Pizza</li>
+                <li class="highlight">Tere Sath Kuch bhi kha sakta hu ❤️</li>
+            </ul>
+            <input type="text" class="answerInput" placeholder="Type your answer..." data-qid="q1">
+        </div>
+
+        <!-- Baaki questions same, bas input mein data-qid add kar dena -->
+        <div class="question" id="q2" style="display:none;">
+            <p class="question-text">2. What is my favorite hobby? 🎬</p>
+            <input type="text" class="answerInput" placeholder="Type your answer..." data-qid="q2">
+        </div>
+
+        <div class="question" id="q3" style="display:none;">
+            <p class="question-text">3. What do I like most about you? 🥰</p>
+            <input type="text" class="answerInput" placeholder="Type your answer..." data-qid="q3">
+        </div>
+
+        <div class="question" id="q4" style="display:none;">
+            <p class="question-text">4. What is my favorite thing to do with you? 🌈</p>
+            <input type="text" class="answerInput" placeholder="Type your answer..." data-qid="q4">
+        </div>
+
+        <div class="question" id="q5" style="display:none;">
+            <p class="question-text">5. What do I enjoy the most when you’re sitting behind me on the scooty? 💛</p>
+            <input type="text" class="answerInput" placeholder="Type your answer..." data-qid="q5">
+        </div>
+
+        <button onclick="checkAnswers()">Submit 🤝</button>
+
+        <div id="secretMessage" class="secret">
+            <canvas id="confetti"></canvas>
+            <div class="message-content">
+                <!-- Yeh change kar dena apne real message se -->
+                I knew you'd give all the right answers, even with a little help from me. 😊
+                You truly understand me, you care for me so much, you even cry for me sometimes, and you do so many
+                things for me…<br>
+                If you do all this, then on your birthday, the least I can do is something for you.<br> It’s not super
+                special, but I put in a lot of effort to make this — just because I like you a lot. ❤️
+                All the bakchodi we do together, creating those funny-funny moments, clicking photos, making weird and
+                wonderful memories… all of it will stay with us forever. 📸😂
+                Thank you for giving me all of this.<br>
+                Once again, <b><i>Happiest Birthday, Meri Puchuuuu!</i></b> 🎂🥰🫶
+            </div>
+        </div>
+    </section>
+
+    <!-- New Cute Modal for messages -->
+    <div id="cuteModal" class="cute-modal">
+        <div class="cute-modal-content">
+            <span class="cute-close" onclick="closeCuteModal()">×</span>
+            <p id="cuteModalText"></p>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="gallery">
+        <h2>Our Beautiful Memories 📸</h2>
+        <div class="cards">
+
+            <div class="card"
+                onclick="openModal('Every time I look at this photo, your stupid-cute smile hits me like free WiFi — instant happiness, no buffering. 😭✨I swear, just seeing you laugh makes me laugh even harder… like, why are we like this? But thank God we are. ❤️Us in one frame: pure, unfiltered, “probably up to no good” energy.Your laugh in this pic? It’s my favorite sound in the whole world.Don’t ever change… unless it’s to laugh even louder. 😆❤️')">
+                <img src="assets/Snapchat-1035604518.jpg">
+                <div class="card-info">Forever Smile</div>
+            </div>
+            <div class="card"
+                onclick="openModal('Looking at this photo, I’m just staring at you… with all these feelings and emotions rushing in.Just seeing you makes my heart so damn happy, Chori. 🥹❤️ I know you’ll probably call this all lies or cringe, but honestly — everything about you feels perfect to me. Your smile, your laugh, your eyes, those cheeks, your whole face, your lips… everything. That’s why whenever you ask, “Kaisi lag rahi hu, Choro?” I just say “Achi hi” — because you always look that good. No exaggeration. 😭✨ So don’t blush too much now, okay? 😏Once again, happiest birthday, Gotudi! 🎂🫶')">
+                <img src="assets/Snapchat-602161464.jpg" alt="Staring at you">
+                <div class="card-info">Just Staring at You</div>
+            </div>
+            <div class="card" onclick="openModal('In this photo, we’re both pouting. We pout in every single photo because it’s your habit… and yeah, I end up doing it with you too. Now I’ve actually started liking pouting… just because it’s with you. Everything feels good when it’s with you. I won’t say much more now, otherwise you’ll get all emotional… which we both know you probably never do on stuff like this anyway 😁 But please don’t say “thank you thank you” again and again. I did all this because I enjoy doing it. These small-small things are exactly what make our bond so special. I’m not doing this because of some “pyaar vyaar” ,I’m doing it because you’re special to me. Happiest birthday, Hendali 🫶🎂')">
+                <img src="assets/Snapchat-453656486.jpg" alt="Double pout moment">
+                <div class="card-info">Constant Pose</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+ <section class="videos">
+    <h2>Our Short Funny Journey 😂</h2>
+    
+    <div class="video-container">
+        <video controls>
+            <source src="assets/VN20260226_061943.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
